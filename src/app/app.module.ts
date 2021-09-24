@@ -12,8 +12,10 @@ import { AddEditEmpComponent } from './employee/add-edit-emp/add-edit-emp.compon
 
 import { SharedService } from './shared.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatDialogModule,
+  ],
+  exports: [
+    MatSnackBarModule,
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

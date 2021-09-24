@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { SharedService } from 'src/app/shared.service';
 @Component({
   selector: 'app-add-edit-dep',
@@ -7,7 +9,10 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class AddEditDepComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(
+    private service:SharedService,
+    private matSnackBar: MatSnackBar
+ ) { }
 
   @Input() dep:any;
   DepartmentId:string;
@@ -34,7 +39,10 @@ export class AddEditDepComponent implements OnInit {
       DepartmentName:this.DepartmentName,
     };
     this.service.updateDepartment(val).subscribe(res=>{
-    alert(res.toString());
+      this.matSnackBar.open('Success!', 'Deparment name updated!', {
+        duration: 3000,
+        panelClass: ['mat-toolbar', 'mat-success'],
+      });
     });
   }
 }
